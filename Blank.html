@@ -20,28 +20,27 @@
             to { transform: rotate(360deg); }
         }
 
-		#header {
-			position: fixed;
-			bottom: 20px;
-			left: 48%;
-			transform: translateX(-50%);
-			text-align: center;
-			opacity: 0.9;
-		}
-		#header img {
-			max-width: 100px; 
-			height: auto;
-		}
-		.business-requirements {
-			font-size: 10px;
-		}
+        #header {
+            position: fixed;
+            bottom: 20px;
+            left: 48%;
+            transform: translateX(-50%);
+            text-align: center;
+            opacity: 0.9;
+        }
+        #header img {
+            max-width: 100px; 
+            height: auto;
+        }
+        .business-requirements {
+            font-size: 10px;
+        }
         .loading-text {
             text-align: center;
             margin-top: 20px;
             font-size: 20px;
         }
-
-        <!--
+        
         .cancel-button {
             display: block;
             margin: 20px auto;
@@ -55,7 +54,7 @@
 
         .cancel-button:hover {
             background-color: #d00;
-        }-->
+        }
 
         .hidden {
             display: none;
@@ -63,13 +62,13 @@
     </style>
 </head>
 <body>
-	<div id="header">
+    <div id="header">
         <img src="LOGO-firsttech.png" alt="Company Logo">
-		<div class="business-requirements">© 2003 - 2024 Firsttech Software 仁維軟體 版權所有</div>
+        <div class="business-requirements">© 2003 - 2024 Firsttech Software 仁維軟體 版權所有</div>
     </div>
     <div class="spinner"></div>
     <div class="loading-text" id="loadingText">Loading</div>
-    <button class="cancel-button" id="cancelButton">取消</button>
+    <!--<button class="cancel-button" id="cancelButton">取消</button>-->
 
     <script>
         let secondsRemaining = 14; 
@@ -82,15 +81,17 @@
             }
         }, secondsRemaining * 1000); 
 
-		document.getElementById('cancelButton').addEventListener('click', () => {
-		
-            if (commandWindow) {
-                commandWindow.close();
-            }
-			window.location.href = 'Overview.html';
-			clearTimeout(timeout); 
-        });
-		
+        const cancelButton = document.getElementById('cancelButton');
+        if (cancelButton) {
+            cancelButton.addEventListener('click', () => {
+                if (commandWindow) {
+                    commandWindow.close();
+                }
+                window.location.href = 'Overview.html';
+                clearTimeout(timeout); 
+            });
+        }
+
         function updateLoadingText() {
             const loadingText = document.getElementById('loadingText');
             loadingText.textContent = 'Loading' + '.'.repeat(Math.abs(secondsRemaining-14));
@@ -114,7 +115,9 @@
         });
 
         setTimeout(() => {
-            document.getElementById('cancelButton').classList.add('hidden');
+            if (cancelButton) {
+                cancelButton.classList.add('hidden');
+            }
         }, 12000);
     </script>
 </body>
