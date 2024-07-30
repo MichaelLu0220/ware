@@ -85,7 +85,7 @@
         function login() {
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
-            if (username === '' && password === '') {
+            if (username === 'wasAdmin' && password === 'wasAdmin') {
                 window.location.href = 'FrontPage.html';
             } else {
                 document.getElementById('error-message').style.display = 'block';

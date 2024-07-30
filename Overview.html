@@ -285,9 +285,9 @@
         document.getElementById('startMatchButton').addEventListener('click', () => {
 			console.log('Button clicked');
     
-			const newWindow = window.open('command.html', '_blank', 'width=650,height=600');
+			const newWindow = window.open('Command.html', '_blank', 'width=650,height=600');
 			
-			window.location.href = 'blank.html';
+			window.location.href = 'Blank.html';
 			<!--window.electronAPI.navigateTo('blank.html');-->
         });
 
@@ -299,7 +299,7 @@
            window.location.href = 'Anding.html';
         }
 		window.electronAPI.onReconciliationComplete(() => {
-            window.location.href = 'final.html';
+            window.location.href = 'Final.html';
         });													 
     </script>
 </body>
