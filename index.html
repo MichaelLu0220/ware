@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+		#header {
+			position: fixed;
+			bottom: 20px;
+			left: 48%;
+			transform: translateX(-50%);
+			text-align: center;
+			opacity: 0.9;
+		}
+		#header img {
+			max-width: 100px; 
+			height: auto;
+		}
+		.business-requirements {
+			font-size: 10px;
+		}
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .container input {
+            display: block;
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+        }
+        .container button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            margin-bottom: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+	<div id="header">
+        <img src="LOGO-firsttech.png" alt="Company Logo">
+		<div class="business-requirements">© 2003 - 2024 Firsttech Software 仁維軟體 版權所有</div>
+    </div>
+    <div class="container">
+        <h1>登入</h1>
+        <input type="text" id="username" placeholder="帳號">
+        <input type="password" id="password" placeholder="密碼">
+        <div class="error" id="error-message">帳號或密碼錯誤</div>
+        <button onclick="login()">登入</button>
+    </div>
+
+    <script>
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            if (username === 'wasAdmin' && password === 'wasAdmin') {
+                window.location.href = 'FrontPage.html';
+            } else {
+                document.getElementById('error-message').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
