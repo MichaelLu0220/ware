@@ -2,11 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="FrontPage" content="width=device-width, initial-scale=1.0">
     <title>業務需求</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+			margin: 0;
+            padding: 0;
+        }
+		.banner {
+            display: flex;
+            justify-content: space-between;
+            background-color: #0066cc;
+            padding: 2px 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 1);
+            border-bottom: 1px solid #ddd;
         }
 		#header {
 			position: fixed;
@@ -27,12 +39,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 7px 20px;
+            padding: 9px 20px;
             font-size: 18px;
             font-weight: bold;
         }
         .header-container .file-upload {
-            flex-grow: 1;
+            flex-grow: 10;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -57,7 +69,7 @@
             background-color: #d32f2f;
         }
         .table-container {
-            max-height: 505px; /* You can adjust the height as needed */
+            max-height: 505px;
             overflow-y: auto;
             margin: 20px;
             border: 1px solid #ddd;
@@ -72,7 +84,7 @@
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
-			min-width: 150px; /* Adjusted width */
+			min-width: 150px;
         }
         th {
             background-color: #4CAF50;
@@ -85,6 +97,7 @@
             display: none;
         }
         .file-upload label {
+			display: none;
             padding: 10px 20px;
             background-color: #4CAF50;
             color: white;
@@ -102,7 +115,7 @@
             margin: 20px;
         }
         .scan-button button {
-            padding: 10px 20px;
+            padding: 9px 20px;
             background-color: #007BFF;
             color: white;
             border: none;
@@ -113,9 +126,36 @@
         .scan-button button:hover {
             background-color: #0056b3;
         }
+		.loading {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 48%;
+            transform: translate(-50%, -50%);
+        }
+        .loading .spinner {
+            margin: 100px auto;
+            width: 90px;
+            height: 90px;
+            border: 10px solid lightgray;
+            border-top-color: black;
+            border-radius: 50%;
+            animation: spin 1s infinite linear;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+		.hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
+<div class="banner">
+	<span>Enterprise Master Planning</span>
+    <span>LCD, LCM & MC最佳化撮合</span>
+</div>
 	<div id="header">
         <img src="LOGO-firsttech.png" alt="Company Logo">
 		<div class="business-requirements">© 2003 - 2024 Firsttech Software 仁維軟體 版權所有</div>
@@ -296,7 +336,10 @@
     <div class="scan-button">
         <button id="scan-energy">掃描能量</button>
     </div>
-
+	<div class="loading">
+        <div class="spinner"></div>
+    </div>
+	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <script>
         document.getElementById('upload').addEventListener('change', function(event) {
@@ -308,9 +351,7 @@
                 var firstSheet = workbook.Sheets[workbook.SheetNames[1]];
                 var jsonData = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
 
-                // Remove unwanted columns and rows
                 jsonData = jsonData.map(row => row.slice(1, -2));
-                jsonData.shift(); // remove header row
 
                 var tableBody = document.getElementById('table-body');
                 tableBody.innerHTML = '';
@@ -328,7 +369,14 @@
         });
 
         document.getElementById('scan-energy').addEventListener('click', function() {
-            window.location.href = 'Overview.html';
+            document.querySelector('.header-container').style.display = 'none';
+			document.querySelector('.banner').style.display = 'none';
+			document.querySelector('.table-container').style.display = 'none';
+            document.querySelector('.loading').style.display = 'block';
+			document.getElementById('scan-energy').classList.add('hidden');
+            setTimeout(function() {
+                window.location.href = 'Overview.html';
+            }, 1000);
         });
 
         function logout() {

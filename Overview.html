@@ -2,11 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Overview" content="width=device-width, initial-scale=1.0">
     <title>能量總攬</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+			margin: 0;
+            padding: 0;
+        }
+		.banner {
+            display: flex;
+            justify-content: space-between;
+            background-color: #0066cc;
+            padding: 2px 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 1);
+            border-bottom: 1px solid #ddd;
         }
 		#header {
 			position: fixed;
@@ -27,7 +39,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 10px 20px;
+            margin: 7.5px 20px;
             font-size: 18px;
             font-weight: bold;
             box-sizing: border-box;
@@ -54,7 +66,7 @@
         .tabs {
             display: flex;
             justify-content: center;
-            margin: 10px 0;
+            margin: 0;
         }
         .tab {
             padding: 5px 10px;
@@ -102,7 +114,7 @@
         }
         .start-button {
             position: fixed;
-            right: 28px;
+            right: 20px;
             bottom: 20px;
             padding: 10px 20px;
             background-color: #007BFF;
@@ -126,6 +138,10 @@
     </style>
 </head>
 <body>
+<div class="banner">
+	<span>Enterprise Master Planning</span>
+    <span>LCD, LCM & MC最佳化撮合</span>
+</div>
 	<div id="header">
         <img src="LOGO-firsttech.png" alt="Company Logo">
 		<div class="business-requirements">© 2003 - 2024 Firsttech Software 仁維軟體 版權所有</div>
@@ -288,7 +304,6 @@
 			const newWindow = window.open('Command.html', '_blank', 'width=650,height=600');
 			
 			window.location.href = 'Blank.html';
-			<!--window.electronAPI.navigateTo('blank.html');-->
         });
 
         document.getElementById('backButton').addEventListener('click', () => {
