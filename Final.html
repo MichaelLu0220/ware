@@ -2,12 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Final" content="width=device-width, initial-scale=1.0">
     <title>撮合结果</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            padding: 3px 1px;
+            margin: 0;
+            padding: 0;
+        }
+		.banner {
+            display: flex;
+            justify-content: space-between;
+            background-color: #0066cc;
+            padding: 2px 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 1);
+            border-bottom: 1px solid #ddd;
         }
 		#header {
 			position: fixed;
@@ -28,7 +39,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 10px 20px;
+            margin: 9px 20px;
             font-size: 18px;
             font-weight: bold;
             box-sizing: border-box;
@@ -127,6 +138,10 @@
     </style>
 </head>
 <body>
+<div class="banner">
+	<span>Enterprise Master Planning</span>
+    <span>LCD, LCM & MC最佳化撮合</span>
+</div>
 <div id="header">
         <img src="LOGO-firsttech.png" alt="Company Logo">
 		<div class="business-requirements">© 2003 - 2024 Firsttech Software 仁維軟體 版權所有</div>
@@ -154,17 +169,16 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Table rows go here -->
             </tbody>
         </table>
     </div>
 
     <div class="result-summary">
-        <div>需求滿足數量: <span id="n">61400</span></div>
-        <div>需求滿足筆數: <span id="m">9</span></div>
-        <div>置換機種筆數: <span id="a">30</span></div>
-        <div>RUN TIME(sec): <span id="runTime">0.6312404</span></div>
-        <div>FINISH TIME: <span id="finishTime">2024-07-30 15:25</span></div>
+        <div>需求滿足數量: <span id="n">61400片</span></div>
+        <div>需求滿足筆數: <span id="m">9筆</span></div>
+        <div>置換機種筆數: <span id="a">30筆</span></div>
+        <div>引擎運行時間: <span id="runTime">0.6312404</span></div>
+        <div>撮合完成日期: <span id="finishTime">2024-07-30 15:25</span></div>
     </div>
 </div>
 
@@ -216,7 +230,7 @@
     });
 
     function getRandomRunTime() {
-        return (Math.random() * (0.7 - 0.5) + 0.5).toFixed(7);
+        return (Math.random() * (7 - 5) + 5).toFixed(2)+'秒';
     }
 
     function getCurrentTime() {
